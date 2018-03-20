@@ -37,3 +37,18 @@ setMethod("initialize", "Rasch",
           }
 )
 
+# Validation methods
+setValidity("Rasch", function(object){
+  # throws an error if size of vector a and vector y are not the same
+  test1<-(length(object@a)==length(object@y))
+  if(test1!=TRUE){return("Size of vector a and vector y are not the same.")}
+  
+  # throws an error if vector a contains missing values
+  test2<-any(is.na(object@a))
+  if(test2==TRUE){return("Vector a contains missing values, which is not allowed.")}
+  
+  # throws an error if vector y contains missing values
+  test3<-any(is.na(object@y))
+  if(test3==TRUE){return("Vector y contains missing values, which is not allowed.")}
+}
+)

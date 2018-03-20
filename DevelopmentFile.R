@@ -40,15 +40,34 @@ check(current.code)
 qDiff<-c(1,2,3,4,5)
 qAns<-c(1,1,0,1,0)
 testRasch<-new("Rasch", testTakerName="Jim", a=qDiff, y=qAns)
+testRasch
+
 probTestRasch<-probability(testRasch,3)
 probTestRasch
+
 likeTestRasch<-likelihood(testRasch,3)
 likeTestRasch
+
 testPrior<-prior(3)
 testPrior
+
 eapTestRasch<-eap(testRasch, lower=-1, upper=3)   # ans=0 if lower = -upper 
 eapTestRasch
 eapTestRasch2<-eap(testRasch, lower=-3, upper=3)   # ans=0 if lower = -upper 
 eapTestRasch2
+
 print(testRasch)
 
+
+## Intentional mistakes to test validation method 
+qDiff1<-c(1,2,3,4,5)
+qAns1<-c(1,1,0,1)
+testRasch1<-new("Rasch", testTakerName="Jim", a=qDiff1, y=qAns1)
+
+qDiff2<-c(1,2,3,4,NA)
+qAns2<-c(1,1,0,1,0)
+testRasch2<-new("Rasch", testTakerName="Jim", a=qDiff2, y=qAns2)
+
+qDiff3<-c(1,2,3,4,5)
+qAns3<-c(1,1,0,1,NA)
+testRasch3<-new("Rasch", testTakerName="Jim", a=qDiff3, y=qAns3)
