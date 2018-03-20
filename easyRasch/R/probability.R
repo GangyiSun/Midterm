@@ -34,12 +34,12 @@ setMethod(f="probability",
             y<-raschObj@y
             n<-length(a)
             
-            Pij<-c()
-            for (i in 1:n){
-              x<-exp(theta-a[i])
+            probCalc<-function(b){
+              x<-exp(theta-b)
               p<-x/(1+x)
-              Pij<-c(Pij,p)
+              return(p)
             }
+            Pij<-sapply(a,probCalc)
             
             PQ<-c()
             for (i in 1:n){

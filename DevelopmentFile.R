@@ -71,3 +71,4 @@ testRasch2<-new("Rasch", testTakerName="Jim", a=qDiff2, y=qAns2)
 qDiff3<-c(1,2,3,4,5)
 qAns3<-c(1,1,0,1,NA)
 testRasch3<-new("Rasch", testTakerName="Jim", a=qDiff3, y=qAns3)
+
