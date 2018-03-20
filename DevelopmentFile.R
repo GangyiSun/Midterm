@@ -30,21 +30,7 @@ check(current.code)
 # initialization function
 # Probability function 
 # Likelihood function
-
-
 # Prior function
-setGeneric(name="prior",
-           def=function(theta, ...)
-           {standardGeneric("prior")}
-)
-
-setMethod(f="prior",
-          definition=function(theta, ...){
-            output<-dnorm(theta, mean=0, sd=3)
-            return(output)
-          }
-)
-
 
 # EAP function
 setGeneric(name="eap",
