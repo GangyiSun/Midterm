@@ -92,6 +92,20 @@ setMethod(f="likelihood",
 )
             
 
+# Prior function
+setGeneric(name="prior",
+           def=function(theta, ...)
+           {standardGeneric("prior")}
+)
+
+setMethod(f="prior",
+          definition=function(theta, ...){
+            output<-dnorm(theta, mean=0, sd=3)
+            return(output)
+          }
+)
+
+
 # Sample code to test that methods work 
 qDiff<-c(1,2,3,4,5)
 qAns<-c(1,1,0,1,0)
@@ -100,5 +114,5 @@ probTestRasch<-probability(testRasch,3)
 probTestRasch
 likeTestRasch<-likelihood(testRasch,3)
 likeTestRasch
-
-
+testPrior<-prior(3)
+testPrior
