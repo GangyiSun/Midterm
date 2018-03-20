@@ -10,6 +10,9 @@
 #' @author Gangyi Sun
 #' @note This is a very simple function
 #' @examples
+#' qDiff<-c(1,2,3,4,5)
+#' qAns<-c(1,1,0,1,0)
+#' testRasch<-new("Rasch", testTakerName="Jim", a=qDiff, y=qAns)
 #' likelihood(testRasch,3)
 #' @seealso \code{\link{print}}
 #' @rdname likelihood

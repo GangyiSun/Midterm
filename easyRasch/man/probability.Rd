@@ -24,6 +24,9 @@ Finds the probability of getting a question right
 This is a very simple function
 }
 \examples{
+qDiff<-c(1,2,3,4,5)
+qAns<-c(1,1,0,1,0)
+testRasch<-new("Rasch", testTakerName="Jim", a=qDiff, y=qAns)
 probability(testRasch,3)
 }
 \seealso{

@@ -23,6 +23,9 @@ Prints name of test taker the expected a posteriori value for thetaJ using equat
 This is a very simple function
 }
 \examples{
+qDiff<-c(1,2,3,4,5)
+qAns<-c(1,1,0,1,0)
+testRasch<-new("Rasch", testTakerName="Jim", a=qDiff, y=qAns)
 print(testRasch)
 }
 \seealso{
