@@ -106,6 +106,34 @@ setMethod(f="prior",
 )
 
 
+# EAP function
+setGeneric(name="eap",
+           def=function(raschObj, lower=-6, upper=6, ...)
+           {standardGeneric("eap")}
+)
+
+setMethod(f="eap",
+          definition=function(raschObj, lower=-6, upper=6, ...){
+            gTheta<-function(theta){
+              g<-theta*likelihood(raschObj,theta)*prior(theta)
+              return(g)
+            }
+            numList<-integrate(gTheta,lower=lower,upper=upper)
+            num<-numList$value
+            
+            fTheta<-function(theta){
+              f<-likelihood(raschObj,theta)*prior(theta)
+              return(f)
+            }
+            denomList<-integrate(fTheta,lower=lower,upper=upper)
+            denom<-denomList$value
+            
+            ans<-num/denom
+            return(ans)
+          }
+)
+
+
 # Sample code to test that methods work 
 qDiff<-c(1,2,3,4,5)
 qAns<-c(1,1,0,1,0)
@@ -116,3 +144,5 @@ likeTestRasch<-likelihood(testRasch,3)
 likeTestRasch
 testPrior<-prior(3)
 testPrior
+eapTestRasch<-eap(testRasch, lower=-3, upper=3)   # ans=0 if lower = -upper 
+eapTestRasch
