@@ -134,6 +134,18 @@ setMethod(f="eap",
 )
 
 
+# print function 
+setMethod("print", "Rasch",
+          function(x, ...){
+            eapResult<-eap(x)
+            name<-x@testTakerName
+            output<-list(name,eapResult)
+            names(output)<-c("Name","EAP Result")
+            return(output)
+          }
+)
+
+
 # Sample code to test that methods work 
 qDiff<-c(1,2,3,4,5)
 qAns<-c(1,1,0,1,0)
@@ -146,3 +158,5 @@ testPrior<-prior(3)
 testPrior
 eapTestRasch<-eap(testRasch, lower=-3, upper=3)   # ans=0 if lower = -upper 
 eapTestRasch
+print(testRasch)
+
