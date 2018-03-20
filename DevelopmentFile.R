@@ -13,30 +13,14 @@ library(testthat)
 setwd("~/Documents/GitHub/Midterm")
 
 
+## Creates package skeleton
+# Only run this the first time to create the skeleton 
+# devtools::create("easyRasch")
+
+
 ## Begin writing functions 
 # Define S4 class Rasch
-setClass(Class="Rasch",
-         representation = representation(
-           testTakerName = "character",
-           a = "numeric",
-           y = "numeric"
-         ),
-         prototype = prototype(
-           testTakerName = c(),
-           a = c(),
-           y = c()
-         )
-)
-
-
 # initialization function
-setMethod("initialize", "Rasch",
-          function(.Object, ...){
-            value=callNextMethod()
-            return(value)
-          }
-)
-
 
 # Probability function 
 setGeneric(name="probability",
