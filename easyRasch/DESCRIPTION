@@ -1,10 +1,22 @@
 Package: easyRasch
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-Depends: R (>= 3.4.3)
-License: What license is it under?
+Title: Estimating Theta in a one parameter item response model 
+Version: 0.1
+Author: Gangyi Sun
+Maintainer: Gangyi Sun <gangyi.sun@wustl.edu>
+Description: Estimates the thetaJ parameter for a respondent in a one parameter item response model, using equation (3). 
+Depends:
+    R (>= 3.0.0),
+    methods
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
+Suggests:
+    devtools
+Collate:
+    'Rasch.R'
+    'probability.R'
+    'likelihood.R'
+    'prior.R'
+    'eap.R'
+    'print.R'
 RoxygenNote: 6.0.1
