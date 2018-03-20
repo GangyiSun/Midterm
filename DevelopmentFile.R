@@ -33,10 +33,47 @@ setMethod("initialize", "Rasch",
           }
 )
 
+# Probability function 
+setGeneric(name="probability",
+           def=function(raschObj, theta, ...)
+           {standardGeneric("probability")}
+)
+
+setMethod(f="probability",
+          definition=function(raschObj, theta, ...){
+            a<-raschObj@a
+            y<-raschObj@y
+            n<-length(a)
+            
+            Pij<-c()
+            for (i in 1:n){
+              x<-exp(theta-a[i])
+              p<-x/(1+x)
+              Pij<-c(Pij,p)
+            }
+            
+            PQ<-c()
+            for (i in 1:n){
+              if (y[i]==1){
+                PQij<-Pij[i]
+                PQ<-c(PQ,PQij)
+              }
+              if (y[i]==0){
+                PQij<-1-Pij[i]
+                PQ<-c(PQ,PQij)
+              }
+            }
+            
+            output<-list(Pij,PQ)
+            names(output)<-c("Pij","PQ")
+            return(output)
+          }
+          )
+
 # Sample code to test that methods work 
 qDiff<-c(1,2,3,4,5)
 qAns<-c(1,1,0,1,0)
 testRasch<-new("Rasch", testTakerName="Jim", a=qDiff, y=qAns)
-
+probTestRanch<-probability(testRasch,3)
 
 
