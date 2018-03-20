@@ -22,9 +22,12 @@
 #' @export
 setMethod("print", "Rasch",
           function(x, ...){
-            eapResult<-eap(x)
-            name<-x@testTakerName
-            output<-list(name,eapResult)
+            
+            eapResult<-eap(x)               # calculates EAP using default upper and lower values 
+            name<-x@testTakerName           # obtains name of test taker
+            
+            # returns name and eapResult as the output of this function.
+            output<-list(name,eapResult)    
             names(output)<-c("Name","EAP Result")
             return(output)
           }

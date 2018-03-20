@@ -12,8 +12,8 @@ Object of class \code{Rasch} is created by the Rasch class' initialization funct
 An object of the class `Rasch' has the following slots:
 \itemize{
 \item \code{testTakerName} a character of the test taker's name
-\item \code{a} a vector of question-item difficulty parameters 
-\item \code{y} a vector of answers for the respondent
+\item \code{a} a vector of question-item parameters ('difficulty')
+\item \code{y} a vector of answers for the respondent (=1 if answered correctly, =0 if wrong.)
 }
 }
 \author{

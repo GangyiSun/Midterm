@@ -30,20 +30,28 @@ setGeneric(name="eap",
 #' @export
 setMethod(f="eap",
           definition=function(raschObj, lower=-6, upper=6, ...){
+            
+            # expresses the numerator of equation (3) as a function gTheta 
             gTheta<-function(theta){
               g<-theta*likelihood(raschObj,theta)*prior(theta)
               return(g)
             }
+            
+            # integrate the numerator (gTheta), obtain the numerical value of the definite integral. 
             numList<-integrate(gTheta,lower=lower,upper=upper)
             num<-numList$value
             
+            # expresses the denominator of equation (3) as a function fTheta 
             fTheta<-function(theta){
               f<-likelihood(raschObj,theta)*prior(theta)
               return(f)
             }
+            
+            # integrate the denominator (fTheta), obtain the numerical value of the definite integral. 
             denomList<-integrate(fTheta,lower=lower,upper=upper)
             denom<-denomList$value
             
+            # the result we want to obtain is equal to num/denom, return that result as the output of this function. 
             ans<-num/denom
             return(ans)
           }

@@ -29,8 +29,12 @@ setGeneric(name="likelihood",
 #' @export
 setMethod(f="likelihood",
           definition=function(raschObj, theta, ...){
+            
+            # use probability function to obtain vector PQ 
             prob<-probability(raschObj, theta)
             PQ<-prob$PQ
+            
+            # calculates product of all elements of vector PQ, returns the product as the output of the function. 
             like<-prod(PQ)
             return(like)
           }

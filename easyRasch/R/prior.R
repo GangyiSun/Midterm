@@ -21,10 +21,12 @@ setGeneric(name="prior",
            {standardGeneric("prior")}
 )
 
-# creates method likelihood 
+# creates method prior 
 #' @export
 setMethod(f="prior",
           definition=function(theta, ...){
+            
+            # use dnorm to calculate the hieght of the normal curve for proposed value of theta, returns that as output of function.  
             output<-dnorm(theta, mean=0, sd=3)
             return(output)
           }

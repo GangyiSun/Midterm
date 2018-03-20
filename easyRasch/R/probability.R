@@ -34,25 +34,29 @@ setMethod(f="probability",
             y<-raschObj@y
             n<-length(a)
             
-            probCalc<-function(b){
-              x<-exp(theta-b)
+            # function to calculate a singular value of Pij given a value of theta and a single value of a. 
+            probCalc<-function(aSingle){
+              x<-exp(theta-aSingle)
               p<-x/(1+x)
               return(p)
             }
+            # use sapply to calculate all values of Pij given a vector of question-item parameters a. 
             Pij<-sapply(a,probCalc)
             
+            # creates vector PQ 
             PQ<-c()
             for (i in 1:n){
-              if (y[i]==1){
+              if (y[i]==1){         # PQij=Pij if yij=1
                 PQij<-Pij[i]
                 PQ<-c(PQ,PQij)
               }
-              if (y[i]==0){
+              if (y[i]==0){         # PQij=1-Pij if yij=0
                 PQij<-1-Pij[i]
                 PQ<-c(PQ,PQij)
               }
             }
             
+            # Returns Pij and PQ as the outputs of this function 
             output<-list(Pij,PQ)
             names(output)<-c("Pij","PQ")
             return(output)
