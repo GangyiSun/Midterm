@@ -5,7 +5,7 @@
 #' @param theta A numeric value, the proposed value of ThetaJ
 #'
 #' @return
-#'  \item{dnormValue}{the height of the specified normal curve evaluated at thetaJ}
+#'  \item{output}{the height of the specified normal curve evaluated at thetaJ}
 #' @author Gangyi Sun
 #' @note This is a very simple function
 #' @examples

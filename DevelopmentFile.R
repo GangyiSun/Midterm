@@ -25,51 +25,14 @@ document(current.code)
 check(current.code)
 
 
-## Begin writing functions 
+## Begin writing functions (all transfered to R folder)
 # Define S4 class Rasch
 # initialization function
 # Probability function 
 # Likelihood function
 # Prior function
-
 # EAP function
-setGeneric(name="eap",
-           def=function(raschObj, lower=-6, upper=6, ...)
-           {standardGeneric("eap")}
-)
-
-setMethod(f="eap",
-          definition=function(raschObj, lower=-6, upper=6, ...){
-            gTheta<-function(theta){
-              g<-theta*likelihood(raschObj,theta)*prior(theta)
-              return(g)
-            }
-            numList<-integrate(gTheta,lower=lower,upper=upper)
-            num<-numList$value
-            
-            fTheta<-function(theta){
-              f<-likelihood(raschObj,theta)*prior(theta)
-              return(f)
-            }
-            denomList<-integrate(fTheta,lower=lower,upper=upper)
-            denom<-denomList$value
-            
-            ans<-num/denom
-            return(ans)
-          }
-)
-
-
 # print function 
-setMethod("print", "Rasch",
-          function(x, ...){
-            eapResult<-eap(x)
-            name<-x@testTakerName
-            output<-list(name,eapResult)
-            names(output)<-c("Name","EAP Result")
-            return(output)
-          }
-)
 
 
 # Sample code to test that methods work 
