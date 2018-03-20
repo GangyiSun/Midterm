@@ -26,7 +26,7 @@ document(current.code)
 check(current.code)
 
 
-## Begin writing functions (all transfered to R folder)
+## Begin writing functions (all transferred to R folder)
 # Define S4 class Rasch
 # initialization function
 # Probability function 

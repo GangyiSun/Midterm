@@ -5,8 +5,8 @@
 #' An object of the class `Rasch' has the following slots:
 #' \itemize{
 #' \item \code{testTakerName} a character of the test taker's name
-#' \item \code{a} a vector of question-item difficulty parameters 
-#' \item \code{y} a vector of answers for the respondent
+#' \item \code{a} a vector of question-item parameters ('difficulty')
+#' \item \code{y} a vector of answers for the respondent (=1 if answered correctly, =0 if wrong.)
 #' }
 #'
 #' @author Gangyi Sun: \email{gangyi.sun@@wustl.edu}
@@ -52,3 +52,4 @@ setValidity("Rasch", function(object){
   if(test3==TRUE){return("Vector y contains missing values, which is not allowed.")}
 }
 )
+
