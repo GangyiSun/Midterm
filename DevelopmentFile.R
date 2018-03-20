@@ -2,13 +2,16 @@
 ## Midterm Exam
 ## Gangyi Sun (441748)
 
+
 ## Load libraries
 library(devtools)
 library(roxygen2)
 library(testthat)
 
+
 ## Set working directory
 setwd("~/Documents/GitHub/Midterm")
+
 
 ## Begin writing functions 
 # Define S4 class Rasch
@@ -25,6 +28,7 @@ setClass(Class="Rasch",
          )
 )
 
+
 # initialization function
 setMethod("initialize", "Rasch",
           function(.Object, ...){
@@ -32,6 +36,7 @@ setMethod("initialize", "Rasch",
             return(value)
           }
 )
+
 
 # Probability function 
 setGeneric(name="probability",
@@ -68,12 +73,32 @@ setMethod(f="probability",
             names(output)<-c("Pij","PQ")
             return(output)
           }
-          )
+)
+
+
+# Likelihood function
+setGeneric(name="likelihood",
+           def=function(raschObj, theta, ...)
+           {standardGeneric("likelihood")}
+)
+
+setMethod(f="likelihood",
+          definition=function(raschObj, theta, ...){
+            prob<-probability(raschObj, theta)
+            PQ<-prob$PQ
+            like<-prod(PQ)
+            return(like)
+          }
+)
+            
 
 # Sample code to test that methods work 
 qDiff<-c(1,2,3,4,5)
 qAns<-c(1,1,0,1,0)
 testRasch<-new("Rasch", testTakerName="Jim", a=qDiff, y=qAns)
-probTestRanch<-probability(testRasch,3)
+probTestRasch<-probability(testRasch,3)
+probTestRasch
+likeTestRasch<-likelihood(testRasch,3)
+likeTestRasch
 
 
