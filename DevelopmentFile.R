@@ -29,22 +29,8 @@ check(current.code)
 # Define S4 class Rasch
 # initialization function
 # Probability function 
-
 # Likelihood function
-setGeneric(name="likelihood",
-           def=function(raschObj, theta, ...)
-           {standardGeneric("likelihood")}
-)
 
-setMethod(f="likelihood",
-          definition=function(raschObj, theta, ...){
-            prob<-probability(raschObj, theta)
-            PQ<-prob$PQ
-            like<-prod(PQ)
-            return(like)
-          }
-)
-            
 
 # Prior function
 setGeneric(name="prior",
